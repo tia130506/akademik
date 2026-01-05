@@ -1,6 +1,7 @@
 <h2>List Data Prodi</h2>
-<a href ='index.php?page=create' class= 'btn btn-primary'>Input Data Prodi</a>
-        <table class="table table-bordered"">
+<a href="index.php?page=create_prodi" class="btn btn-primary">Tambah Prodi</a>
+
+        <table class="table table-bordered">
   <thead>
     <tr>
       <th scope="col">ID</th>
@@ -22,8 +23,10 @@
             <td><?= $row['jenjang'] ?></td>
             <td><?= $row['keterangan'] ?></td>
             <td>
-                <a href="index.php?page=hapus&hapus=<?= $row['id'] ?>" class="btn btn-danger btn-sm">Hapus</a>
-                <a href="index.php?id=<?=$row['id']?>&page=edit" class="btn btn-success btn-sm">Edit</a>
+                <a href="index.php?page=proses&hapus_prodi=<?= $row['id'] ?>"
+                    onclick="return confirm('Yakin hapus?')"class="btn btn-danger btn-sm">Hapus
+                </a>
+                <a href="index.php?page=edit_prodi&id=<?= $row['id'] ?>" class="btn btn-warning btn-sm">Edit</a>
             </td>
         </tr>
     <?php } ?>

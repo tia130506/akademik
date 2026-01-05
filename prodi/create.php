@@ -23,7 +23,7 @@
         <textarea name="keterangan" class="form-control"></textarea>
     </div>
 
-    <input type="submit" name="simpan" class="btn btn-primary">
+    <button type="submit" name="simpan_prodi" class="btn btn-primary">Simpan</button>
     <a href="index.php?page=dataprodi" class="btn btn-secondary">Kembali</a>
 
 </form>

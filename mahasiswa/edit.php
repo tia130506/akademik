@@ -1,4 +1,4 @@
-<?php 
+<?php
 require 'koneksi.php';
 
 if (!isset($_GET['nim'])) {
@@ -7,49 +7,60 @@ if (!isset($_GET['nim'])) {
 }
 
 $nim = $_GET['nim'];
-$query = "SELECT * FROM mahasiswa WHERE nim='$nim'";
-$sql = $koneksi->query($query);
+
+$sql = $koneksi->query("SELECT * FROM mahasiswa WHERE nim='$nim'");
 $data = $sql->fetch_assoc();
 
 if (!$data) {
-    echo "Data tidak ditemukan!";
+    echo "Data mahasiswa tidak ditemukan!";
     exit;
 }
+
+$prodi = $koneksi->query("SELECT * FROM prodi");
 ?>
 
 <h1>Edit Data Mahasiswa</h1>
 
-<form action="proses.php" method="post">
+<form action="index.php?page=proses" method="post">
 
-    <!-- Simpan NIM lama untuk UPDATE -->
     <input type="hidden" name="nim_lama" value="<?= $data['nim'] ?>">
 
     <div class="mb-3">
-        <label for="nim" class="form-label">NIM</label>
-        <input type="text" class="form-control" id="nim" name="nim"
+        <label>NIM</label>
+        <input type="text" name="nim" class="form-control"
                value="<?= $data['nim'] ?>">
     </div>
 
     <div class="mb-3">
-        <label for="nama_mhs" class="form-label">Nama Mahasiswa</label>
-        <input type="text" class="form-control" id="nama_mhs" name="nama_mhs"
+        <label>Nama Mahasiswa</label>
+        <input type="text" name="nama_mhs" class="form-control"
                value="<?= $data['nama_mhs'] ?>">
     </div>
 
     <div class="mb-3">
-        <label for="tgl_lahir" class="form-label">Tanggal Lahir</label>
-        <input type="date" class="form-control" id="tgl_lahir" name="tgl_lahir"
+        <label>Program Studi</label>
+        <select name="prodi_id" class="form-control" required>
+            <?php while ($p = $prodi->fetch_assoc()) { ?>
+                <option value="<?= $p['id'] ?>"
+                    <?= ($p['id'] == $data['prodi_id']) ? 'selected' : '' ?>>
+                    <?= $p['nama_prodi'] ?> (<?= $p['jenjang'] ?>)
+                </option>
+            <?php } ?>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label>Tanggal Lahir</label>
+        <input type="date" name="tgl_lahir" class="form-control"
                value="<?= $data['tgl_lahir'] ?>">
     </div>
 
     <div class="mb-3">
-        <label for="alamat" class="form-label">Alamat</label>
-        <textarea class="form-control" id="alamat" rows="3" name="alamat"><?= $data['alamat'] ?></textarea>
+        <label>Alamat</label>
+        <textarea name="alamat" class="form-control"><?= $data['alamat'] ?></textarea>
     </div>
 
-    <div>
-        <input type="submit" name="ubah" value="Update" class="btn btn-primary">
-        <input type="reset" value="Reset" class="btn btn-secondary">
-    </div>
+    <button type="submit" name="ubah_mahasiswa" class="btn btn-primary">Update</button>
+
 
 </form>
