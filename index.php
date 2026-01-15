@@ -104,7 +104,7 @@ switch ($page) {
         break;
 
     case 'profil':
-        include 'edit_profil.php';
+        include 'edit_profile.php';
         break;
 
     default:
