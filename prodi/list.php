@@ -26,7 +26,8 @@
                 <a href="index.php?page=proses&hapus_prodi=<?= $row['id'] ?>"
                     onclick="return confirm('Yakin hapus?')"class="btn btn-danger btn-sm">Hapus
                 </a>
-                <a href="index.php?page=edit_prodi&id=<?= $row['id'] ?>" class="btn btn-warning btn-sm">Edit</a>
+               <a href="index.php?page=edit_prodi&id=<?= $row['id'] ?>" class="btn btn-secondary btn-sm">Edit</a>
+
             </td>
         </tr>
     <?php } ?>

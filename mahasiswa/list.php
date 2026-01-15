@@ -9,7 +9,7 @@ $tampil = $koneksi->query("
 ?>
 
 <h2>List Data Mahasiswa</h2>
-    <a href="index.php?page=create_mahasiswa" class="btn btn-primary">Tambah Mahasiswa</a>
+    <a href="index.php?page=create_mahasiswa" class="btn btn-secondary">Tambah Mahasiswa</a>
     
 <table class="table table-bordered">
     <thead>

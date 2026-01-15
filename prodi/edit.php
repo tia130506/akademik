@@ -1,10 +1,8 @@
 <?php
 require 'koneksi.php';
 
-// ambil id dari URL
 $row = $_GET['id'];
 
-// ambil data prodi berdasarkan id
 $query = "SELECT * FROM prodi WHERE id='$row'";
 $sql = $koneksi->query($query);
 $data = $sql->fetch_assoc();
